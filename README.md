@@ -82,3 +82,13 @@ whether investigation, retraining, rollback, or promotion is appropriate.
 
 > Drift thresholds and promotion policies in this repository are reference
 > configuration values, not universal production standards.
+
+## Portfolio Disclosure
+
+This repository is an independent reference implementation created to
+demonstrate MLOps architecture, model serving, monitoring, drift detection,
+model governance, testing, and software engineering practices.
+
+It is not presented as work completed for a specific employer or client.
+Any example datasets, metrics, thresholds, or performance values are
+demonstration fixtures unless explicitly identified as measured results.
