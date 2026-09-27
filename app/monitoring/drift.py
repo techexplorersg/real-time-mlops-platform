@@ -107,3 +107,34 @@ def population_stability_index(
     )
 
     return float(psi)
+
+# Important: these thresholds are configuration examples, not universal statistical laws.
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+class DriftStatus(str, Enum):
+    STABLE = "stable"
+    WARNING = "warning"
+    DRIFTED = "drifted"
+
+
+@dataclass(frozen=True)
+class DriftPolicy:
+    warning_threshold: float = 0.10
+    drift_threshold: float = 0.25
+
+
+def classify_drift(
+    psi: float,
+    policy: DriftPolicy = DriftPolicy(),
+) -> DriftStatus:
+
+    if psi >= policy.drift_threshold:
+        return DriftStatus.DRIFTED
+
+    if psi >= policy.warning_threshold:
+        return DriftStatus.WARNING
+
+    return DriftStatus.STABLE
